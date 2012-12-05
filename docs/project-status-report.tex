@@ -105,6 +105,7 @@
     \hline
     A             & 2012 DEC 03 & Document Outline    \\
     B             & 2012 DEC 04 & Pre-Release Draft   \\
+    C             & 2012 DEC 04 & Public Release      \\
     \hline
   \end{tabular}
 \end{table}
@@ -116,11 +117,11 @@
 
 It's the night before your project is due, and you need a new \texttt{SN7407N} hex buffer chip. And you need it now. This type of small component costs just a dollar, but shipping it from a traditional parts catalog can take a week. Meanwhile, the retail stores in your neighborhood charge twice the price. You need that small component now and you deserve to pay a fair price! There is a solution--the \textbf{Small Parts Vending Machine} is designed to consider safety, performance, and user satisfaction while serving members of the RPI Embedded Hardware Club.
 
-The Small Parts Vending Machine was conceived by EHC as a unique solution to the problem of distributing components to members. The machine also provides an opportunity for fair profit to EHC when permanently installed in the workshop, even when components are priced low. The design is further enhanced by multidisciplinary team of students behind it and by special attention to Human Factors during the design process.
+The Small Parts Vending Machine was conceived by EHC as a unique solution to the problem of distributing components to members. The machine also provides an opportunity for fair profit to EHC when permanently installed in the workshop, even when components are priced low. The design is further enhanced by the multidisciplinary team of students behind it and by special attention to Human Factors during the design process.
 
-Features of the machine are described in the \emph{\nameref{sec:spec}}--including an intuitive interface, a dispensing method that is safe to users and operators, and payment via the RFID tag that Rensselaer students already use to access labs and pay for meals.
+Features of the machine are described in the \emph{\nameref{sec:spec}}--including an intuitive interface, a dispensing method that is safe to users and operators, and payment via the RFID tag that Rensselaer students already use to access buildings and pay for meals.
 
-As of November 2012, the project specifications include the core machine and one type of component dispenser, the software is feature-complete, and a device prototype implements the core functionality of the specification. With additional funding, at least one complete machine can be built and further evaluated. Specific challenges and recommendations are made in the \emph{\nameref{sec:challenges}}~section~(pg.\ref{sec:challenges}).
+As of November 2012, the project specifications include the core machine and one type of component dispenser, the software is feature-complete, and a device prototype implements the core functionality of the specification. With additional funding, at least one complete machine can be built and further evaluated. Specific challenges and recommendations are made in the \emph{\nameref{sec:challenges}}~section~(pg.\pageref{sec:challenges}).
 
 
 \pagebreak
@@ -158,7 +159,7 @@ In general, the HF and EHC teams are comprised of the same people. All team memb
     James Pressly*        & Human Factors Specialist  & pressj2@rpi.edu & Mat. Sci. `13 \\
     Caroline M. Sullivan  & Design Specialist         & sullic7@rpi.edu & Undeclared `16\\
     Zachary E. Torre      & Interface Specialist      & torrez@rpi.edu  & Cog. Sci. `12 \\
-    Jordan Yamada         &                           & yamadaj@rpi.edu & EE `16        \\
+    Jordan Yamada         & Mechanical Systems        & yamadaj@rpi.edu & EE `16        \\
     \hline
   \end{tabular}\\
   * one member contributed to the \emph{Human Factors} portion of the project during the Fall 2012 semester, but is not an EHC member and will not assist the project during Spring 2013.
@@ -220,11 +221,11 @@ The main trade-off to these cost and development advantages is the lack of real-
       Purchase.save()
   \end{lstlisting}
   \end{tabular}%
-  \label{fig:purchase-vend}%
   \caption{\scriptsize Psuedocode for functions called by the \texttt{Purchase.vend()} interface}%
+  \label{fig:purchase-vend}%
 \end{wrapfigure}
 
-Software design reflects that the management and interface subsystems serve to abstract machine operations to goals that the user may have. The primary goal in use of this machine is the purchase of an arbitrary type and number of components. As such, the GUI software needs only to construct a virtual \texttt{cart} (as a list of representative pairs) and associate it with the user's verified identifier. Dispensing, logging, and charging a user's purchase are handled by the single interface function, \texttt{Purchase.vend()}. Refer to the flowchart in Figure~\ref{fig:purchase-path} for a visual description of the steps that the interface requires of the user. Refer to the psuedocode in Figure~\ref{fig:purchase-vend} for a description of the software functions that are called from within the \texttt{Purchase.vend()} interface.
+Software design reflects that the management and interface subsystems serve to abstract machine operations to goals that the user may have. The primary goal in use of this machine is the purchase of an arbitrary type and number of components. As such, the GUI software needs only to construct a virtual \texttt{cart} (as a list of representative pairs) and associate it with the user's verified identifier~\cite{rpi_vend}. Dispensing, logging, and charging a user's purchase are handled by the single interface function, \texttt{Purchase.vend()}. Refer to the flowchart in Figure~\ref{fig:purchase-path} for a visual description of the steps that the interface requires of the user. Refer to the psuedocode in Figure~\ref{fig:purchase-vend} for a description of the software functions that are called from within the \texttt{Purchase.vend()} interface.
 
 
 \pagebreak
@@ -245,14 +246,14 @@ Performance was the second human factor considered--because in order for the ven
 \subsection{User Satisfaction}
 Finally, human factors is concerned with user satisfaction while using the device. The vending machine designed for the embedded hardware club is both ergonomic and has an easy to use purchasing interface. The dispensers in the vending machine are designed to stack vertically rather than horizontally. Initially, a horizontal layout was considered so that the machine could vend components across a table and into a single drop tray. This is similar to an industrial pick-and-place automated assembly device. However, the design team realized that such a design offers this minor convenience only by sacrificing ease-of-use to the user and floor space in the host location. It was therefore decided that a vertical layout is required. The team also decided it would be easier for the user to find the components by dispensing each unique part into an individual tray, rather than one large tray, and including an LED indicator light above each tray. Walking away from the screen to view and retrieve items, as would occur in the horizontal layout, was deemed suboptimal so the vertical layout, which allows the user to stay in front of the screen while retrieving items, was pursued for the final design. The team also decided not to place dispensers low on the rack as this would make the user need to bend down to retrieve some items. The trade-off associated with this is that more racks will be needed to house the same number of dispensers but this is an acceptable trade off to ensure user satisfaction.
 
-The screen height is another important factor of the design to consider. If the screen is too high or too low then the user will have trouble making a purchase. The average height of an American male is about 5'10'' and about 5'4'' for an American female. The team decided that the screen should be centered at a height of approximately 4'6'' or ``chest height'' for the average American male and a little below eye level for American females. To aid taller users in operating the device the screen will be angled backward slightly. This will allow taller users to view the screen more easily while still allowing shorter users to easily make a purchase.
-
 \begin{figure}[t]%
   \centering%
   \fbox{\includegraphics[width=\textwidth]{2012-11-30_slide-16.pdf}}%
-  \label{fig:gui}%
   \caption{A mock-up of one screen in the user interface}%
+  \label{fig:gui}%
 \end{figure}
+
+The screen height is another important factor of the design to consider. If the screen is too high or too low then the user will have trouble making a purchase. The average height of an American male is about 5'10'' and about 5'4'' for an American female. The team decided that the screen should be centered at a height of approximately 4'6'' or ``chest height'' for the average American male and a little below eye level for American females. To aid taller users in operating the device the screen will be angled backward slightly. This will allow taller users to view the screen more easily while still allowing shorter users to easily make a purchase.
 
 The Graphical User Interface, or ``GUI'' was also designed to increase user satisfaction. The interface uses large touchscreen buttons to allow for easier human-computer interaction. The colors are simple and high in contrast and were chosen based on information strategies like ``top-down'' processing. For example, the ``forward'' or ``proceed'' buttons are green while the ``quit'' and ``back'' buttons remain red--the user doesn't even need to read the labels to know what these buttons do. Top down processing is also evident when the Item is out of stock. For example, when an item is out of stock, the previously blue highlight changes to red. Immediately giving the user the notion that the item may no longer available even before he or she reads the ``out of stock'' label. The buttons and labels are consistent throughout the interface, and each process in buying a part is displayed in its own window. Reinforcing a sequential process and increasing intuitiveness.
 
@@ -265,7 +266,7 @@ Application of human factors before and during the design process allowed planne
 \label{sec:challenges}
 
 \subsection{Design Specification Must Be Expanded}
-As of December 2012 the \nameref{sec:spec} (see pg.~\ref{sec:spec}) defines the core system, user interface, chassis, and SMD dispenser. Using the publicly and privately available project notes, formal documentation of each detail must be completed. The other two dispenser types (DIP and loose-component dispensers) must still be designed. This requires additional mechanical design and a small extension of the device controller software.
+As of December 2012 the \nameref{sec:spec} (see pg.~\pageref{sec:spec}) defines the core system, user interface, chassis, and SMD dispenser. Using the publicly and privately available project notes, formal documentation of each detail must be completed. The other two dispenser types (DIP and loose-component dispensers) must still be designed. This requires additional mechanical design and a small extension of the device controller software.
 
 \subsection{Machine Prototype is Inadequate for Continued Use}
 The prototype machine that was demonstrated to Prof. Ruecker's class on Thursday 29 November 2012 fully implements the core system and the feature-complete user interface. The demo chassis is the width described by the design specification, but is just one-third of the height and was constructed with salvaged lumber and cardboard rather than steel and plywood, as the specification states. Additionally, time and availability constraints caused the team to miss the deadline for the SMD dispenser so that it was not functional during the 29 NOV demonstration.
@@ -290,7 +291,7 @@ Finally, timeline and work planning charts should be made and used. The team is 
 \section{Document Preparation}
 This document was prepared by Theo Pak using source materials developed by the project team. In addition to the mailing list, these source materials were also shared by the team through the EHC public forums and with document collaboration services like \emph{Google Drive} and \emph{Dropbox}. The source code for this document is available in the code repository at \url{https://github.com/rpiEHC/rpi_vend}.
 
-The \emph{\nameref{sec:hf}} section~(pg.~\ref{sec:hf}) of this document is adapted from the submission prepared by the Human Factors team and submitted to Prof. Ruecker for evaluation.
+The \emph{\nameref{sec:hf}} section~(pg.~\pageref{sec:hf}) of this document is adapted from the submission prepared by the Human Factors team and submitted to Prof. Ruecker for evaluation.
 
 
 \section{References}
@@ -334,8 +335,8 @@ The \emph{\nameref{sec:hf}} section~(pg.~\ref{sec:hf}) of this document is adapt
 
 \begin{figure}[H]%
   \includegraphics[width=6.5in]{2012-11-11_flowchart-of-purchase-path.png}%
-  \label{fig:purchase-path}%
   \caption{Flowchart of Purchase Path from User Perspective}%
+  \label{fig:purchase-path}%
 \end{figure}
 
 
